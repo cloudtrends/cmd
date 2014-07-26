@@ -64,10 +64,12 @@ func runApp(args []string) {
 	}
 
 	// Else, just build and run the app.
+	revel.TRACE.Println("Begin harness build")
 	app, err := harness.Build()
 	if err != nil {
 		errorf("Failed to build app: %s", err)
 	}
 	app.Port = port
+	revel.TRACE.Println("Begin Cmd Run")
 	app.Cmd().Run()
 }
